@@ -1,6 +1,7 @@
 'use client';
 
 import { EmailIcon, PhoneIcon, TextIcon, UrlIcon, WifiIcon } from '@/components/ui/Icons';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';
@@ -21,10 +22,8 @@ export const Header: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="bg-primary text-white p-1.5 rounded-lg">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 0h2v3h-2v-3zm3 3h3v2h-3v-2zm-3 3h2v3h-2v-3zm3 3h3v2h-3v-2z" />
-              </svg>
+            <div className="p-1 rounded-lg">
+              <Image src="/icon.png" alt="QR Studio Logo" width={32} height={32} className="rounded-lg" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent">
               QR Studio

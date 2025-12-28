@@ -11,6 +11,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "QR Studio - Free QR Code Generator | Instant & Private",
   description: "Create URL, WiFi, Text, Email, and Phone codes instantly with QR Studio. Free, no signup, download as PNG or SVG. 100% private.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
   other: {
     'google-site-verification': process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
   },

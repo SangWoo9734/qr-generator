@@ -4,7 +4,7 @@ import Script from 'next/script';
 import React from 'react';
 
 export const Analytics: React.FC = () => {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || 'G-2FWTDMK9KZ';
 
   if (!gaId) return null;
 

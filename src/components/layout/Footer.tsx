@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -8,10 +9,8 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="bg-primary text-white p-1 rounded-lg">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 0h2v3h-2v-3zm3 3h3v2h-3v-2zm-3 3h2v3h-2v-3zm3 3h3v2h-3v-2z" />
-                </svg>
+              <div className="p-1 rounded-lg">
+                <Image src="/icon.png" alt="QR Studio Logo" width={24} height={24} className="rounded-lg" />
               </div>
               <span className="text-lg font-bold">QR Studio</span>
             </Link>
@@ -36,6 +35,7 @@ export const Footer: React.FC = () => {
             <h4 className="font-bold text-text-primary mb-4">Legal</h4>
             <ul className="space-y-2 text-sm">
               <li><Link href="/about" className="text-text-secondary hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="/contact" className="text-text-secondary hover:text-primary transition-colors">Contact Us</Link></li>
               <li><Link href="/privacy-policy" className="text-text-secondary hover:text-primary transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms-of-service" className="text-text-secondary hover:text-primary transition-colors">Terms of Service</Link></li>
             </ul>

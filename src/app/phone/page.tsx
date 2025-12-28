@@ -23,6 +23,7 @@ export default function PhoneQRPage() {
     <QRGenerator
       title="Phone QR Code Generator"
       description="Create a QR code that opens the dialer app on any smartphone with your number ready to call. Perfect for support lines and business flyers."
+      type="phone"
       formComponent={PhoneForm}
       faqItems={faqItems}
     />

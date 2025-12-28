@@ -2,6 +2,7 @@
 
 import { QRCodeOptions } from '@/lib/qr-utils';
 
+import { trackQRGeneration } from '@/lib/analytics';
 import React from 'react';
 import { Button } from '../../ui/Button';
 import { TipIcon } from '../../ui/Icons';
@@ -23,6 +24,7 @@ export const PhoneForm: React.FC<PhoneFormProps> = ({ onGenerate }) => {
       return;
     }
     setError('');
+    trackQRGeneration('phone');
     // tel:+123456789
     onGenerate(`tel:${phoneNumber}`, { width: parseInt(size) });
   };

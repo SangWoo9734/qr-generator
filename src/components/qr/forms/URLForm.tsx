@@ -2,9 +2,10 @@
 
 import { QRCodeOptions } from '@/lib/qr-utils';
 
+import { trackQRGeneration } from '@/lib/analytics';
 import React from 'react';
-import { TipIcon } from '../../ui/Icons';
 import { Button } from '../../ui/Button';
+import { TipIcon } from '../../ui/Icons';
 import { Input, Select } from '../../ui/Input';
 
 interface URLFormProps {
@@ -22,11 +23,8 @@ export const URLForm: React.FC<URLFormProps> = ({ onGenerate }) => {
       setError('Please enter a URL');
       return;
     }
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      // Basic validation, but we can be lenient or auto-prepend
-      // Let's just warn for now or prepend if it looks like a domain
-    }
     setError('');
+    trackQRGeneration('url');
     onGenerate(url, { width: parseInt(size) });
   };
 

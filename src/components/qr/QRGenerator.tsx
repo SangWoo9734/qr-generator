@@ -9,6 +9,7 @@ import { QRCodeOptions } from '@/lib/qr-utils';
 interface QRGeneratorProps {
   title: string;
   description: string;
+  type: string;
   formComponent: React.ComponentType<{ onGenerate: (data: string, options: QRCodeOptions) => void }>;
   faqItems?: { question: string; answer: string }[];
 }
@@ -16,6 +17,7 @@ interface QRGeneratorProps {
 export const QRGenerator: React.FC<QRGeneratorProps> = ({
   title,
   description,
+  type,
   formComponent: FormComponent,
   faqItems,
 }) => {
@@ -72,6 +74,7 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({
             qrSvg={qrSvg}
             isLoading={isLoading}
             size={options.width || 512}
+            type={type}
           />
         </div>
       </div>

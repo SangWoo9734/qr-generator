@@ -23,6 +23,7 @@ export default function EmailQRPage() {
     <QRGenerator
       title="Email QR Code Generator"
       description="Make it easy for people to email you. One scan opens their email app with your address and a subject line already filled in."
+      type="email"
       formComponent={EmailForm}
       faqItems={faqItems}
     />

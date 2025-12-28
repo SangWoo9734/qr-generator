@@ -2,6 +2,7 @@
 
 import { QRCodeOptions } from '@/lib/qr-utils';
 
+import { trackQRGeneration } from '@/lib/analytics';
 import React from 'react';
 import { Button } from '../../ui/Button';
 import { TipIcon } from '../../ui/Icons';
@@ -27,6 +28,7 @@ export const TextForm: React.FC<TextFormProps> = ({ onGenerate }) => {
       return;
     }
     setError('');
+    trackQRGeneration('text');
     onGenerate(text, { width: parseInt(size) });
   };
 

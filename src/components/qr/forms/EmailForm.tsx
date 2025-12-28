@@ -2,6 +2,7 @@
 
 import { QRCodeOptions } from '@/lib/qr-utils';
 
+import { trackQRGeneration } from '@/lib/analytics';
 import React from 'react';
 import { Button } from '../../ui/Button';
 import { TipIcon } from '../../ui/Icons';
@@ -30,6 +31,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ onGenerate }) => {
     }
 
     setErrors({});
+    trackQRGeneration('email');
     // mailto:email@example.com?subject=Subject&body=Body
     const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     onGenerate(mailto, { width: parseInt(size) });

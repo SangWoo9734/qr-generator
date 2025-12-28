@@ -23,6 +23,7 @@ export default function TextQRPage() {
     <QRGenerator
       title="Text QR Code Generator"
       description="Create a QR code for plain text. Perfect for short notes, product information, or simple messages that need to be read offline."
+      type="text"
       formComponent={TextForm}
       faqItems={faqItems}
     />

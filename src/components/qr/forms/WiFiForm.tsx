@@ -2,6 +2,7 @@
 
 import { QRCodeOptions } from '@/lib/qr-utils';
 
+import { trackQRGeneration } from '@/lib/analytics';
 import React from 'react';
 import { Button } from '../../ui/Button';
 import { TipIcon, WifiIcon } from '../../ui/Icons';
@@ -30,6 +31,7 @@ export const WiFiForm: React.FC<WiFiFormProps> = ({ onGenerate }) => {
     }
 
     setErrors({});
+    trackQRGeneration('wifi');
     // MeCard format for WiFi: WIFI:S:SSID;T:WPA;P:PASSWORD;;
     const wifiData = `WIFI:T:${encryption};S:${ssid};P:${password};;`;
     onGenerate(wifiData, { width: parseInt(size) });

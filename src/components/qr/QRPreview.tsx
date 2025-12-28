@@ -1,5 +1,6 @@
 'use client';
 
+import { trackQRDownload } from '@/lib/analytics';
 import React from 'react';
 import { Button } from '../ui/Button';
 
@@ -8,11 +9,13 @@ interface QRPreviewProps {
   qrSvg: string | null;
   isLoading?: boolean;
   size: number;
+  type: string;
 }
 
-export const QRPreview: React.FC<QRPreviewProps> = ({ qrDataUrl, qrSvg, isLoading, size }) => {
+export const QRPreview: React.FC<QRPreviewProps> = ({ qrDataUrl, qrSvg, isLoading, size, type }) => {
   const downloadPNG = () => {
     if (!qrDataUrl) return;
+    trackQRDownload('png', type);
     const link = document.createElement('a');
     link.href = qrDataUrl;
     link.download = `qr-code-${Date.now()}.png`;
@@ -23,6 +26,7 @@ export const QRPreview: React.FC<QRPreviewProps> = ({ qrDataUrl, qrSvg, isLoadin
 
   const downloadSVG = () => {
     if (!qrSvg) return;
+    trackQRDownload('svg', type);
     const blob = new Blob([qrSvg], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');

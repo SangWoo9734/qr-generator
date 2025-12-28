@@ -27,6 +27,7 @@ export default function URLQRPage() {
     <QRGenerator
       title="URL QR Code Generator"
       description="Convert any website link or URL into a scannable QR code. Perfect for menus, business cards, and marketing materials."
+      type="url"
       formComponent={URLForm}
       faqItems={faqItems}
     />

@@ -27,6 +27,7 @@ export default function WiFiQRPage() {
     <QRGenerator
       title="WiFi QR Code Generator"
       description="Let guests join your WiFi network instantly by scanning a QR code. Ideal for cafes, restaurants, and home guest rooms."
+      type="wifi"
       formComponent={WiFiForm}
       faqItems={faqItems}
     />

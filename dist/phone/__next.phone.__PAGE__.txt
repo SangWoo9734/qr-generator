@@ -1,7 +1,0 @@
-1:"$Sreact.fragment"
-2:I[70875,["/_next/static/chunks/f709d119915c034a.js","/_next/static/chunks/0f28613b18fd7797.js","/_next/static/chunks/cf5962a4ec1fecbf.js"],"QRGenerator"]
-3:I[5048,["/_next/static/chunks/f709d119915c034a.js","/_next/static/chunks/0f28613b18fd7797.js","/_next/static/chunks/cf5962a4ec1fecbf.js"],"PhoneForm"]
-4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/7340adf74ff47ec0.js"],"OutletBoundary"]
-5:"$Sreact.suspense"
-0:{"buildId":"864YjcZqGSXwyxy65uS-o","rsc":["$","$1","c",{"children":[["$","$L2",null,{"title":"Phone QR Code Generator","description":"Create a QR code that opens the dialer app on any smartphone with your number ready to call. Perfect for support lines and business flyers.","type":"phone","formComponent":"$3","faqItems":[{"question":"Will the phone call be made automatically?","answer":"No. For security reasons, scanning the code will open the phone's dialer app with the number filled in. The user must still press the \"Call\" button to start the call."},{"question":"Does this work for international numbers?","answer":"Yes. We recommend using the international format (e.g., +1 for USA) to ensure the number can be dialed correctly from anywhere in the world."}]}],[["$","script","script-0",{"src":"/_next/static/chunks/0f28613b18fd7797.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/cf5962a4ec1fecbf.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
-6:null

@@ -1,7 +1,0 @@
-1:"$Sreact.fragment"
-2:I[70875,["/_next/static/chunks/f709d119915c034a.js","/_next/static/chunks/bdfa50753d8ddd0c.js","/_next/static/chunks/cf5962a4ec1fecbf.js"],"QRGenerator"]
-3:I[61510,["/_next/static/chunks/f709d119915c034a.js","/_next/static/chunks/bdfa50753d8ddd0c.js","/_next/static/chunks/cf5962a4ec1fecbf.js"],"EmailForm"]
-4:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/7340adf74ff47ec0.js"],"OutletBoundary"]
-5:"$Sreact.suspense"
-0:{"buildId":"864YjcZqGSXwyxy65uS-o","rsc":["$","$1","c",{"children":[["$","$L2",null,{"title":"Email QR Code Generator","description":"Make it easy for people to email you. One scan opens their email app with your address and a subject line already filled in.","type":"email","formComponent":"$3","faqItems":[{"question":"How does an Email QR code work?","answer":"It uses the mailto: protocol. When a smartphone scans it, the device recognizes the email format and opens the default email application with the recipient and subject already filled out."},{"question":"Can I include a message body?","answer":"Yes! Our tool allows you to include an optional subject and message body, saving your customers time and effort."}]}],[["$","script","script-0",{"src":"/_next/static/chunks/bdfa50753d8ddd0c.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/cf5962a4ec1fecbf.js","async":true}]],["$","$L4",null,{"children":["$","$5",null,{"name":"Next.MetadataOutlet","children":"$@6"}]}]]}],"loading":null,"isPartial":false}
-6:null

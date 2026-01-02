@@ -1,3 +1,4 @@
+import { AdUnit } from '@/components/ui/AdUnit';
 import { EmailIcon, PhoneIcon, RocketIcon, TextIcon, UrlIcon, WifiIcon } from '@/components/ui/Icons';
 import Link from 'next/link';
 
@@ -111,11 +112,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ad Placeholder - Home Bottom */}
+      {/* Ad Placement - Home Bottom */}
       <div className="container mx-auto px-4 mb-20">
-        <div className="w-full h-32 bg-white border border-dashed border-border-custom rounded-2xl flex items-center justify-center text-text-secondary text-xs uppercase tracking-widest">
-          Advertisement
-        </div>
+        <AdUnit slot="2229817675" />
       </div>
 
       {/* Features Section */}

@@ -2,6 +2,7 @@
 
 import { generateQRCodeDataURL, generateQRCodeSVG } from '@/lib/qr-utils';
 import React from 'react';
+import { AdUnit } from '../ui/AdUnit';
 import { QRPreview } from './QRPreview';
 
 import { QRCodeOptions } from '@/lib/qr-utils';
@@ -45,10 +46,8 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Ad Placeholder - Header Bottom */}
-      <div className="w-full h-24 bg-background-secondary border border-dashed border-border-custom rounded-lg mb-8 flex items-center justify-center text-text-secondary text-xs uppercase tracking-widest">
-        Advertisement
-      </div>
+      {/* Ad Placement - Header Bottom */}
+      <AdUnit slot="1475123293" height="h-24" className="mb-8" />
 
       <div className="flex flex-col lg:flex-row gap-12 items-start">
         {/* Left Column: Form (40%) */}
@@ -79,10 +78,8 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({
         </div>
       </div>
 
-      {/* Ad Placeholder - Tool Bottom */}
-      <div className="w-full h-24 bg-background-secondary border border-dashed border-border-custom rounded-lg my-12 flex items-center justify-center text-text-secondary text-xs uppercase tracking-widest">
-        Advertisement
-      </div>
+      {/* Ad Placement - Tool Bottom */}
+      <AdUnit slot="2229817675" height="h-24" className="my-12" />
 
       {/* Content Section (SEO) */}
       <div className="max-w-4xl mx-auto space-y-12 mt-16">

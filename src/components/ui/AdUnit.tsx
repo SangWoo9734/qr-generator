@@ -6,26 +6,30 @@ interface AdUnitProps {
   slot: string;
   format?: 'auto' | 'fluid' | 'rectangle';
   className?: string;
+  height?: string;
 }
 
-export const AdUnit: React.FC<AdUnitProps> = ({ slot, format = 'auto', className = '' }) => {
+export const AdUnit: React.FC<AdUnitProps> = ({ slot, format = 'auto', className = '', height = 'w-full h-24' }) => {
   useEffect(() => {
     try {
-      // @ts-expect-error: adsbygoogle is not defined on window in typescript but loaded via script
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      if (typeof window !== 'undefined') {
+        // @ts-expect-error: adsbygoogle is not defined on window in typescript but loaded via script
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
     } catch (err) {
       console.error('AdSense error:', err);
     }
   }, []);
 
+  const clientId = "ca-pub-6614861725944730";
+
   return (
-    <div className={`ad-container overflow-hidden text-center mx-auto my-8 ${className}`}>
+    <div className={`ad-container overflow-hidden text-center mx-auto my-8 ${height} ${className}`}>
       <span className="block text-[10px] text-text-secondary uppercase tracking-widest mb-1">Advertisement</span>
-      {/* Real AdSense code would go here */}
       <ins
         className="adsbygoogle"
         style={{ display: 'block' }}
-        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" // Replace with actual client ID
+        data-ad-client={clientId}
         data-ad-slot={slot}
         data-ad-format={format}
         data-full-width-responsive="true"

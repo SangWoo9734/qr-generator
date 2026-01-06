@@ -1,3 +1,4 @@
+import { tools } from '@/config/tools';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -23,11 +24,13 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-text-primary mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/url" className="text-text-secondary hover:text-primary transition-colors">URL QR Code</Link></li>
-              <li><Link href="/wifi" className="text-text-secondary hover:text-primary transition-colors">WiFi QR Code</Link></li>
-              <li><Link href="/text" className="text-text-secondary hover:text-primary transition-colors">Text QR Code</Link></li>
-              <li><Link href="/email" className="text-text-secondary hover:text-primary transition-colors">Email QR Code</Link></li>
-              <li><Link href="/phone" className="text-text-secondary hover:text-primary transition-colors">Phone QR Code</Link></li>
+              {tools.map((tool) => (
+                <li key={tool.id}>
+                  <Link href={tool.path} className="text-text-secondary hover:text-primary transition-colors">
+                    {tool.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

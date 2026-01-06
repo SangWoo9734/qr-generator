@@ -4,9 +4,8 @@ import { QRCodeOptions } from '@/lib/qr-utils';
 
 import { trackQRGeneration } from '@/lib/analytics';
 import React from 'react';
-import { Button } from '../../ui/Button';
-import { TipIcon } from '../../ui/Icons';
-import { Input, Select } from '../../ui/Input';
+import { Input, TextArea } from '../../ui/Input';
+import { BaseForm } from './BaseForm';
 
 interface EmailFormProps {
   onGenerate: (data: string, options: QRCodeOptions) => void;
@@ -23,7 +22,7 @@ export const EmailForm: React.FC<EmailFormProps> = ({ onGenerate }) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
     if (!email) newErrors.email = 'Email address is required';
-    else if (!/^\S+@\S+\.\S+$/.test(email)) newErrors.email = 'Invalid email address';
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Invalid email address';
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -32,17 +31,29 @@ export const EmailForm: React.FC<EmailFormProps> = ({ onGenerate }) => {
 
     setErrors({});
     trackQRGeneration('email');
-    // mailto:email@example.com?subject=Subject&body=Body
-    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    onGenerate(mailto, { width: parseInt(size) });
+    const mailtoData = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    onGenerate(mailtoData, { width: parseInt(size) });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <BaseForm
+      onSubmit={handleSubmit}
+      size={size}
+      onSizeChange={setSize}
+      buttonText="Generate Email QR Code"
+      tips={
+        <ul className="text-xs text-text-secondary space-y-1 list-disc pl-4">
+          <li>Pre-fill subject and body to save users time</li>
+          <li>Works with all major email apps (Gmail, Outlook, etc.)</li>
+          <li>Perfect for RSVP, support, or contact forms</li>
+        </ul>
+      }
+    >
       <Input
         id="email"
-        label="Email Address"
-        placeholder="contact@example.com"
+        label="Recipient Email"
+        type="email"
+        placeholder="hello@example.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         error={errors.email}
@@ -52,49 +63,19 @@ export const EmailForm: React.FC<EmailFormProps> = ({ onGenerate }) => {
       <Input
         id="subject"
         label="Subject (Optional)"
-        placeholder="Inquiry about..."
+        placeholder="Inquiry about services"
         value={subject}
         onChange={(e) => setSubject(e.target.value)}
       />
 
-      <div className="space-y-1.5">
-        <label htmlFor="body" className="block text-sm font-medium text-text-primary">
-          Message (Optional)
-        </label>
-        <textarea
-          id="body"
-          rows={3}
-          className="w-full rounded-lg border border-border-custom bg-white px-4 py-2.5 text-text-primary transition-colors focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          placeholder="Hello, I would like to..."
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        />
-      </div>
-
-      <Select
-        id="size"
-        label="QR Code Size"
-        value={size}
-        onChange={(e) => setSize(e.target.value)}
-        options={[
-          { value: '256', label: 'Small' },
-          { value: '512', label: 'Medium' },
-          { value: '1024', label: 'Large' },
-        ]}
+      <TextArea
+        id="body"
+        label="Message Body (Optional)"
+        placeholder="Hi there, I would like to..."
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+        rows={3}
       />
-
-      <Button type="submit" className="w-full">
-        Generate Email QR Code
-      </Button>
-
-      <div className="bg-primary-light p-4 rounded-lg border border-primary/10 mt-6">
-        <h5 className="text-sm font-semibold text-primary mb-1"><TipIcon size={16} className="inline-block mr-1.5 mb-0.5" /> Pro Tips:</h5>
-        <ul className="text-xs text-text-secondary space-y-1 list-disc pl-4">
-          <li>Check the email address carefully for typos</li>
-          <li>Pre-filling the subject and body saves time for your users</li>
-          <li>Test with your own email before sharing the code</li>
-        </ul>
-      </div>
-    </form>
+    </BaseForm>
   );
 };

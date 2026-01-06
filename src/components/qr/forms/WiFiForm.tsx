@@ -4,9 +4,9 @@ import { QRCodeOptions } from '@/lib/qr-utils';
 
 import { trackQRGeneration } from '@/lib/analytics';
 import React from 'react';
-import { Button } from '../../ui/Button';
-import { TipIcon, WifiIcon } from '../../ui/Icons';
+import { WifiIcon } from '../../ui/Icons';
 import { Input, Select } from '../../ui/Input';
+import { BaseForm } from './BaseForm';
 
 interface WiFiFormProps {
   onGenerate: (data: string, options: QRCodeOptions) => void;
@@ -32,13 +32,30 @@ export const WiFiForm: React.FC<WiFiFormProps> = ({ onGenerate }) => {
 
     setErrors({});
     trackQRGeneration('wifi');
-    // MeCard format for WiFi: WIFI:S:SSID;T:WPA;P:PASSWORD;;
     const wifiData = `WIFI:T:${encryption};S:${ssid};P:${password};;`;
     onGenerate(wifiData, { width: parseInt(size) });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <BaseForm
+      onSubmit={handleSubmit}
+      size={size}
+      onSizeChange={setSize}
+      buttonText="Generate WiFi QR Code"
+      tips={
+        <div className="space-y-4">
+          <div>
+            <h5 className="text-sm font-semibold text-primary mb-1"><WifiIcon size={16} className="inline-block mr-1.5 mb-0.5" /> WiFi Setup:</h5>
+            <p className="text-xs text-text-secondary">
+              Scanning this QR code will automatically connect your guests to your WiFi network without them needing to type the password.
+            </p>
+          </div>
+          <p className="text-xs text-text-secondary">
+            We process everything locally. Your WiFi password is never sent to any server.
+          </p>
+        </div>
+      }
+    >
       <Input
         id="ssid"
         label="Network Name (SSID)"
@@ -60,48 +77,17 @@ export const WiFiForm: React.FC<WiFiFormProps> = ({ onGenerate }) => {
         disabled={encryption === 'nopass'}
       />
 
-      <div className="grid grid-cols-2 gap-4">
-        <Select
-          id="encryption"
-          label="Encryption"
-          value={encryption}
-          onChange={(e) => setEncryption(e.target.value)}
-          options={[
-            { value: 'WPA', label: 'WPA/WPA2' },
-            { value: 'WEP', label: 'WEP' },
-            { value: 'nopass', label: 'None' },
-          ]}
-        />
-        <Select
-          id="size"
-          label="QR Code Size"
-          value={size}
-          onChange={(e) => setSize(e.target.value)}
-          options={[
-            { value: '256', label: 'Small' },
-            { value: '512', label: 'Medium' },
-            { value: '1024', label: 'Large' },
-          ]}
-        />
-      </div>
-
-      <Button type="submit" className="w-full">
-        Generate WiFi QR Code
-      </Button>
-
-      <div className="bg-primary-light p-4 rounded-lg border border-primary/10 mt-6">
-        <h5 className="text-sm font-semibold text-primary mb-1"><WifiIcon size={16} className="inline-block mr-1.5 mb-0.5" /> WiFi Setup:</h5>
-        <p className="text-xs text-text-secondary">
-          Scanning this QR code will automatically connect your guests to your WiFi network without them needing to type the password.
-        </p>
-      </div>
-
-      <div className="bg-primary-light p-4 rounded-lg border border-primary/10 mt-4">
-        <h5 className="text-sm font-semibold text-primary mb-1"><TipIcon size={16} className="inline-block mr-1.5 mb-0.5" /> Pro Tip:</h5>
-        <p className="text-xs text-text-secondary">
-          We process everything locally. Your WiFi password is never sent to any server.
-        </p>
-      </div>
-    </form>
+      <Select
+        id="encryption"
+        label="Encryption"
+        value={encryption}
+        onChange={(e) => setEncryption(e.target.value)}
+        options={[
+          { value: 'WPA', label: 'WPA/WPA2' },
+          { value: 'WEP', label: 'WEP' },
+          { value: 'nopass', label: 'None' },
+        ]}
+      />
+    </BaseForm>
   );
 };

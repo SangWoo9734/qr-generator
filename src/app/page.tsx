@@ -1,44 +1,7 @@
 import { AdUnit } from '@/components/ui/AdUnit';
-import { EmailIcon, PhoneIcon, RocketIcon, TextIcon, UrlIcon, WifiIcon } from '@/components/ui/Icons';
+import { RocketIcon } from '@/components/ui/Icons';
+import { tools } from '@/config/tools';
 import Link from 'next/link';
-
-const tools = [
-  {
-    name: 'URL QR Code',
-    description: 'Convert any website link into a scannable QR code.',
-    path: '/url',
-    icon: <UrlIcon className="w-8 h-8" />,
-    color: 'bg-indigo-50 text-indigo-600',
-  },
-  {
-    name: 'WiFi QR Code',
-    description: 'Share your WiFi network details without typing passwords.',
-    path: '/wifi',
-    icon: <WifiIcon className="w-8 h-8" />,
-    color: 'bg-emerald-50 text-emerald-600',
-  },
-  {
-    name: 'Text QR Code',
-    description: 'Create a QR code for plain text messages and notes.',
-    path: '/text',
-    icon: <TextIcon className="w-8 h-8" />,
-    color: 'bg-violet-50 text-violet-600',
-  },
-  {
-    name: 'Email QR Code',
-    description: 'Pre-fill email recipient and subject for quick contact.',
-    path: '/email',
-    icon: <EmailIcon className="w-8 h-8" />,
-    color: 'bg-fuchsia-50 text-fuchsia-600',
-  },
-  {
-    name: 'Phone QR Code',
-    description: 'Generate a QR code that opens the dialer with your number.',
-    path: '/phone',
-    icon: <PhoneIcon className="w-8 h-8" />,
-    color: 'bg-sky-50 text-sky-600',
-  },
-];
 
 export default function Home() {
   return (

@@ -1,17 +1,23 @@
 'use client';
 
-import { EmailIcon, PhoneIcon, TextIcon, UrlIcon, WifiIcon } from '@/components/ui/Icons';
+import { tools } from '@/config/tools';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-const navItems = [
-  { name: 'URL', path: '/url', icon: <UrlIcon size={16} /> },
-  { name: 'WiFi', path: '/wifi', icon: <WifiIcon size={16} /> },
-  { name: 'Text', path: '/text', icon: <TextIcon size={16} /> },
-  { name: 'Email', path: '/email', icon: <EmailIcon size={16} /> },
-  { name: 'Phone', path: '/phone', icon: <PhoneIcon size={16} /> },
+interface NavItem {
+  name: string;
+  path: string;
+  icon?: ReactNode;
+}
+
+const navItems: NavItem[] = [
+  ...tools.map(tool => ({
+    name: tool.name.split(' ')[0], // Get just 'URL', 'WiFi', etc.
+    path: tool.path,
+    icon: tool.icon
+  })),
   { name: 'FAQ', path: '/faq' },
 ];
 
@@ -42,14 +48,14 @@ export const Header: React.FC = () => {
                     : 'text-text-secondary hover:text-text-primary hover:bg-background-secondary'
                 }`}
               >
-                <span>{item.icon && item.icon}</span>
+                {item.icon && <span>{item.icon}</span>}
                 <span>{item.name}</span>
               </Link>
             ))}
           </nav>
 
           <div className="md:hidden">
-            {/* Mobile menu could be added here, but for now we'll rely on the horizontal scroll tabs on pages */}
+            {/* Mobile menu could be added here */}
           </div>
         </div>
       </div>

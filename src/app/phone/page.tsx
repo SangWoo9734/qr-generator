@@ -9,12 +9,20 @@ export const metadata: Metadata = {
 
 const faqItems = [
   {
+    question: 'How do I create a phone QR code?',
+    answer: 'Enter your phone number, including the country code for international compatibility. Click "Generate" and download your QR code. When scanned, it will open the phone\'s dialer app with your number already filled in.',
+  },
+  {
     question: 'Will the phone call be made automatically?',
-    answer: 'No. For security reasons, scanning the code will open the phone\'s dialer app with the number filled in. The user must still press the "Call" button to start the call.',
+    answer: 'No. For security reasons, scanning the code will open the dialer app with the number ready, but the user must still press the "Call" button to initiate the call.',
   },
   {
     question: 'Does this work for international numbers?',
-    answer: 'Yes. We recommend using the international format (e.g., +1 for USA) to ensure the number can be dialed correctly from anywhere in the world.',
+    answer: 'Yes. We recommend using the full international format (e.g., +1 for USA, +44 for UK) to ensure the number can be dialed correctly from any country in the world.',
+  },
+  {
+    question: 'Can I use this for WhatsApp?',
+    answer: 'While this tool is for direct phone calls, you can use our URL QR code generator with a WhatsApp "wa.me" link to create a QR code that opens a WhatsApp chat directly.',
   },
 ];
 

@@ -12,6 +12,7 @@ const navItems = [
   { name: 'Text', path: '/text', icon: <TextIcon size={16} /> },
   { name: 'Email', path: '/email', icon: <EmailIcon size={16} /> },
   { name: 'Phone', path: '/phone', icon: <PhoneIcon size={16} /> },
+  { name: 'FAQ', path: '/faq' },
 ];
 
 export const Header: React.FC = () => {
@@ -41,7 +42,7 @@ export const Header: React.FC = () => {
                     : 'text-text-secondary hover:text-text-primary hover:bg-background-secondary'
                 }`}
               >
-                <span>{item.icon}</span>
+                <span>{item.icon && item.icon}</span>
                 <span>{item.name}</span>
               </Link>
             ))}

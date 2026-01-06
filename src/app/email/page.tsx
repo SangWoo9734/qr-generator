@@ -9,12 +9,20 @@ export const metadata: Metadata = {
 
 const faqItems = [
   {
-    question: 'How does an Email QR code work?',
-    answer: 'It uses the mailto: protocol. When a smartphone scans it, the device recognizes the email format and opens the default email application with the recipient and subject already filled out.',
+    question: 'How do I create an email QR code?',
+    answer: 'Enter the recipient\'s email address, a subject line, and an optional message body. Click "Generate" and download your QR code. When scanned, it will automatically open the user\'s default email app with all the fields pre-filled.',
   },
   {
-    question: 'Can I include a message body?',
-    answer: 'Yes! Our tool allows you to include an optional subject and message body, saving your customers time and effort.',
+    question: 'Can I pre-fill the email subject and body?',
+    answer: 'Yes! Our tool allows you to include a subject and a message body. This is perfect for RSVPing to events, requesting support, or starting a specific conversation with your customers.',
+  },
+  {
+    question: 'Do email QR codes work on all devices?',
+    answer: 'Yes, email QR codes use the standard "mailto:" protocol, which is supported by virtually all modern smartphones and email clients, including Gmail, Outlook, and Apple Mail.',
+  },
+  {
+    question: 'Can I send attachments through email QR codes?',
+    answer: 'No, the standard "mailto:" protocol used by QR codes does not support attachments for security and technical reasons. You can, however, include a link to a file in the message body.',
   },
 ];
 

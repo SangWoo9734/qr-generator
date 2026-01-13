@@ -7,6 +7,9 @@ on:
 jobs:
   apply-seo-improvements:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
     - name: Checkout repository

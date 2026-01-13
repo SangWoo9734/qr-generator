@@ -104,6 +104,182 @@ class SEOActionApplicator:
             print(f"❌ [{file_path}] 메타 설명 변경 실패: {str(e)}")
             return False
 
+    def apply_add_internal_link(self, file_path: str, params: Dict[str, Any]) -> bool:
+        """내부 링크 추가"""
+        full_path = self.workspace_root / file_path
+
+        if not full_path.exists():
+            print(f"❌ 파일을 찾을 수 없음: {file_path}")
+            return False
+
+        try:
+            link_url = params.get('link_url')
+            link_text = params.get('link_text')
+            target_text = params.get('target_text')  # 링크를 삽입할 위치의 텍스트
+
+            if not all([link_url, link_text, target_text]):
+                print(f"❌ 필수 파라미터 누락: link_url, link_text, target_text")
+                return False
+
+            content = full_path.read_text(encoding='utf-8')
+
+            # TSX/JSX 파일 처리
+            if file_path.endswith('.tsx') or file_path.endswith('.jsx'):
+                # target_text 뒤에 링크 추가
+                # 예: "텍스트" → "텍스트 <a href='/url'>링크</a>"
+                link_html = f' <a href="{link_url}">{link_text}</a>'
+                pattern = f'({re.escape(target_text)})'
+
+                if re.search(pattern, content):
+                    modified = re.sub(pattern, rf'\1{link_html}', content, count=1)
+                    full_path.write_text(modified, encoding='utf-8')
+                    print(f"✅ [{file_path}] 내부 링크 추가: {link_text} → {link_url}")
+                    return True
+
+            # HTML 파일 처리
+            elif file_path.endswith('.html'):
+                link_html = f' <a href="{link_url}">{link_text}</a>'
+                pattern = f'({re.escape(target_text)})'
+
+                if re.search(pattern, content):
+                    modified = re.sub(pattern, rf'\1{link_html}', content, count=1)
+                    full_path.write_text(modified, encoding='utf-8')
+                    print(f"✅ [{file_path}] 내부 링크 추가: {link_text} → {link_url}")
+                    return True
+
+            print(f"⚠️  [{file_path}] target_text를 찾을 수 없음: {target_text}")
+            return False
+
+        except Exception as e:
+            print(f"❌ [{file_path}] 내부 링크 추가 실패: {str(e)}")
+            return False
+
+    def apply_canonical_url(self, file_path: str, canonical_url: str) -> bool:
+        """Canonical URL 업데이트"""
+        full_path = self.workspace_root / file_path
+
+        if not full_path.exists():
+            print(f"❌ 파일을 찾을 수 없음: {file_path}")
+            return False
+
+        try:
+            content = full_path.read_text(encoding='utf-8')
+
+            # HTML 파일 처리
+            if file_path.endswith('.html'):
+                # 기존 canonical 태그가 있는지 확인
+                canonical_pattern = r'<link[^>]*rel=["\']canonical["\'][^>]*/?>'
+
+                if re.search(canonical_pattern, content, re.IGNORECASE):
+                    # 기존 canonical 업데이트
+                    new_canonical = f'<link rel="canonical" href="{canonical_url}" />'
+                    modified = re.sub(canonical_pattern, new_canonical, content, flags=re.IGNORECASE)
+                else:
+                    # 새로운 canonical 추가 (</head> 앞에)
+                    new_canonical = f'    <link rel="canonical" href="{canonical_url}" />\n  </head>'
+                    modified = re.sub(r'</head>', new_canonical, content, flags=re.IGNORECASE)
+
+                full_path.write_text(modified, encoding='utf-8')
+                print(f"✅ [{file_path}] Canonical URL 설정: {canonical_url}")
+                return True
+
+            # TSX 파일 처리 (Next.js)
+            elif file_path.endswith('.tsx') or file_path.endswith('.ts'):
+                # Next.js metadata에 추가
+                # alternates: { canonical: 'URL' }
+                if 'alternates:' in content:
+                    # 기존 alternates 업데이트
+                    pattern = r'(alternates:\s*\{[^}]*canonical:\s*["\'])([^"\']+)(["\'])'
+                    if re.search(pattern, content):
+                        modified = re.sub(pattern, rf'\g<1>{canonical_url}\g<3>', content)
+                    else:
+                        # alternates에 canonical 추가
+                        pattern = r'(alternates:\s*\{)'
+                        modified = re.sub(pattern, rf'\1\n    canonical: "{canonical_url}",', content)
+                else:
+                    # 새로운 alternates 추가 (metadata 객체 안에)
+                    pattern = r'(export const metadata[^{]*\{)'
+                    modified = re.sub(pattern, rf'\1\n  alternates: {{\n    canonical: "{canonical_url}"\n  }},', content)
+
+                full_path.write_text(modified, encoding='utf-8')
+                print(f"✅ [{file_path}] Canonical URL 설정: {canonical_url}")
+                return True
+
+            print(f"⚠️  [{file_path}] 지원하지 않는 파일 형식")
+            return False
+
+        except Exception as e:
+            print(f"❌ [{file_path}] Canonical URL 설정 실패: {str(e)}")
+            return False
+
+    def apply_og_tags(self, file_path: str, og_data: Dict[str, str]) -> bool:
+        """Open Graph 태그 업데이트"""
+        full_path = self.workspace_root / file_path
+
+        if not full_path.exists():
+            print(f"❌ 파일을 찾을 수 없음: {file_path}")
+            return False
+
+        try:
+            content = full_path.read_text(encoding='utf-8')
+
+            # HTML 파일 처리
+            if file_path.endswith('.html'):
+                modified = content
+
+                for og_key, og_value in og_data.items():
+                    # og:title, og:description, og:image 등
+                    property_name = f"og:{og_key}" if not og_key.startswith('og:') else og_key
+
+                    # 기존 태그 찾기
+                    pattern = rf'<meta[^>]*property=["\']({property_name})["\'][^>]*/?>'
+
+                    if re.search(pattern, modified, re.IGNORECASE):
+                        # 기존 태그 업데이트
+                        new_tag = f'<meta property="{property_name}" content="{og_value}" />'
+                        modified = re.sub(pattern, new_tag, modified, flags=re.IGNORECASE)
+                    else:
+                        # 새 태그 추가 (</head> 앞에)
+                        new_tag = f'    <meta property="{property_name}" content="{og_value}" />\n  </head>'
+                        modified = re.sub(r'</head>', new_tag, modified, flags=re.IGNORECASE, count=1)
+
+                full_path.write_text(modified, encoding='utf-8')
+                print(f"✅ [{file_path}] Open Graph 태그 업데이트: {len(og_data)}개")
+                return True
+
+            # TSX 파일 처리 (Next.js)
+            elif file_path.endswith('.tsx') or file_path.endswith('.ts'):
+                modified = content
+
+                # Next.js metadata의 openGraph 섹션 업데이트
+                if 'openGraph:' in content:
+                    # 기존 openGraph 업데이트
+                    for og_key, og_value in og_data.items():
+                        pattern = rf'({og_key}:\s*["\'])([^"\']+)(["\'])'
+                        if re.search(pattern, content):
+                            modified = re.sub(pattern, rf'\g<1>{og_value}\g<3>', modified)
+                else:
+                    # 새로운 openGraph 추가
+                    og_lines = ['  openGraph: {']
+                    for og_key, og_value in og_data.items():
+                        og_lines.append(f'    {og_key}: "{og_value}",')
+                    og_lines.append('  },')
+                    og_block = '\n'.join(og_lines)
+
+                    pattern = r'(export const metadata[^{]*\{)'
+                    modified = re.sub(pattern, rf'\1\n{og_block}', content)
+
+                full_path.write_text(modified, encoding='utf-8')
+                print(f"✅ [{file_path}] Open Graph 태그 업데이트: {len(og_data)}개")
+                return True
+
+            print(f"⚠️  [{file_path}] 지원하지 않는 파일 형식")
+            return False
+
+        except Exception as e:
+            print(f"❌ [{file_path}] Open Graph 태그 업데이트 실패: {str(e)}")
+            return False
+
     def apply_action(self, action: Dict[str, Any]) -> bool:
         """단일 액션 적용"""
         action_type = action.get('action_type')
@@ -114,12 +290,23 @@ class SEOActionApplicator:
         if not new_value and 'parameters' in action:
             new_value = action['parameters'].get('new_value')
 
+        # parameters 추출
+        parameters = action.get('parameters', {})
+
         print(f"\n🔧 액션 적용: {action_type} → {target_file}")
 
         if action_type == 'update_meta_title':
             success = self.apply_meta_title(target_file, new_value)
         elif action_type == 'update_meta_description':
             success = self.apply_meta_description(target_file, new_value)
+        elif action_type == 'add_internal_link':
+            success = self.apply_add_internal_link(target_file, parameters)
+        elif action_type == 'update_canonical_url':
+            canonical_url = parameters.get('canonical_url') or new_value
+            success = self.apply_canonical_url(target_file, canonical_url)
+        elif action_type == 'update_og_tags':
+            og_data = parameters.get('og_data', {})
+            success = self.apply_og_tags(target_file, og_data)
         else:
             print(f"⚠️  지원하지 않는 액션 타입: {action_type}")
             return False

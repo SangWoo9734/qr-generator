@@ -103,8 +103,7 @@ jobs:
           --title "🔍 [SEO Agent] Auto improvements - $(date +%Y-%m-%d)" \
           --body-file /tmp/pr_body.md \
           --base main \
-          --head "$BRANCH_NAME" \
-          --label "seo,automated"
+          --head "$BRANCH_NAME"
 
     - name: Summary
       if: always()

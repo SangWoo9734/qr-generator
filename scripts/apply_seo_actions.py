@@ -112,7 +112,11 @@ class SEOActionApplicator:
         """단일 액션 적용"""
         action_type = action.get('action_type')
         target_file = action.get('target_file')
+
+        # new_value는 최상위 또는 parameters 안에 있을 수 있음
         new_value = action.get('new_value')
+        if not new_value and 'parameters' in action:
+            new_value = action['parameters'].get('new_value')
 
         print(f"\n🔧 액션 적용: {action_type} → {target_file}")
 

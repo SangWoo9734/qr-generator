@@ -9,8 +9,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "QR Studio - Free QR Code Generator | Instant & Private",
-  description: "Create URL, WiFi, Text, Email, and Phone codes instantly with QR Studio. Free, no signup, download as PNG or SVG. 100% private.",
+  title: "Free QR Code Generator - Fast & Easy",
+  description: "Create QR codes instantly for free. Support for URLs, text, vCard, and more. No signup required.",
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",

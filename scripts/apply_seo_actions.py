@@ -49,15 +49,13 @@ class SEOActionApplicator:
                     print(f"✅ [{file_path}] 메타 타이틀 변경: {new_value}")
                     return True
 
-            # HTML 파일 처리 (BeautifulSoup)
+            # HTML 파일 처리 (Regex - 포맷 유지)
             elif file_path.endswith('.html'):
-                from bs4 import BeautifulSoup
-                soup = BeautifulSoup(content, 'html.parser')
-
-                title_tag = soup.find('title')
-                if title_tag:
-                    title_tag.string = new_value
-                    full_path.write_text(str(soup), encoding='utf-8')
+                # Pattern: <title>...</title>
+                pattern = r'(<title>)([^<]+)(</title>)'
+                if re.search(pattern, content):
+                    modified = re.sub(pattern, rf'\1{new_value}\3', content)
+                    full_path.write_text(modified, encoding='utf-8')
                     print(f"✅ [{file_path}] 메타 타이틀 변경: {new_value}")
                     return True
 
@@ -89,15 +87,13 @@ class SEOActionApplicator:
                     print(f"✅ [{file_path}] 메타 설명 변경: {new_value[:50]}...")
                     return True
 
-            # HTML 파일 처리
+            # HTML 파일 처리 (Regex - 포맷 유지)
             elif file_path.endswith('.html'):
-                from bs4 import BeautifulSoup
-                soup = BeautifulSoup(content, 'html.parser')
-
-                meta_desc = soup.find('meta', {'name': 'description'})
-                if meta_desc:
-                    meta_desc['content'] = new_value
-                    full_path.write_text(str(soup), encoding='utf-8')
+                # Pattern: <meta name="description" content="..." /> 또는 <meta content="..." name="description" />
+                pattern = r'(<meta[^>]*name=["\']description["\'][^>]*content=["\'])([^"\']*)(["\']\s*/?>)'
+                if re.search(pattern, content, re.IGNORECASE):
+                    modified = re.sub(pattern, rf'\g<1>{new_value}\g<3>', content, flags=re.IGNORECASE)
+                    full_path.write_text(modified, encoding='utf-8')
                     print(f"✅ [{file_path}] 메타 설명 변경: {new_value[:50]}...")
                     return True
 

@@ -18,6 +18,7 @@ export default function EmailPage() {
       type="email"
       formComponent={EmailForm}
       faqItems={tool.faqItems}
+      bestPractices={tool.bestPractices}
     />
   );
 }

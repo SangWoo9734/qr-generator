@@ -18,6 +18,7 @@ export default function URLPage() {
       type="url"
       formComponent={URLForm}
       faqItems={tool.faqItems}
+      bestPractices={tool.bestPractices}
     />
   );
 }

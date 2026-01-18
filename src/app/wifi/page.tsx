@@ -18,6 +18,7 @@ export default function WiFiPage() {
       type="wifi"
       formComponent={WiFiForm}
       faqItems={tool.faqItems}
+      bestPractices={tool.bestPractices}
     />
   );
 }

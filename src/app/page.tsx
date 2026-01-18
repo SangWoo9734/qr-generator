@@ -76,32 +76,151 @@ export default function Home() {
       </section>
 
       {/* Ad Placement - Home Bottom */}
-      <div className="container mx-auto px-4 mb-20">
-        <AdUnit slot="2229817675" />
+      <div className="container mx-auto px-4 mb-20 text-center">
+        <span className="text-[10px] text-text-secondary/50 uppercase tracking-widest mb-2 block">Advertisement</span>
+        <div className="flex justify-center">
+          <AdUnit slot="2229817675" />
+        </div>
       </div>
 
-      {/* Features Section */}
-      <section className="bg-white py-20 border-t border-border-custom">
+      {/* How It Works Section */}
+      <section className="bg-white py-24 border-t border-border-custom">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-12 h-12 bg-primary-light text-primary rounded-full flex items-center justify-center text-xl font-bold">1</div>
-              <h4 className="text-xl font-bold text-text-primary">Always Free</h4>
-              <p className="text-text-secondary text-sm">No hidden costs, no subscriptions, and zero watermarks on your generated codes.</p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-12 h-12 bg-primary-light text-primary rounded-full flex items-center justify-center text-xl font-bold">2</div>
-              <h4 className="text-xl font-bold text-text-primary">100% Private</h4>
-              <p className="text-text-secondary text-sm">Your data never leaves your browser. QR codes are generated locally for maximum security.</p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-12 h-12 bg-primary-light text-primary rounded-full flex items-center justify-center text-xl font-bold">3</div>
-              <h4 className="text-xl font-bold text-text-primary">Commercial Use</h4>
-              <p className="text-text-secondary text-sm">Generate QR codes for your business, menu, or marketing materials without any restrictions.</p>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-text-primary mb-12 text-center">How QR Studio Works</h2>
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center font-bold">1</div>
+                  <div>
+                    <h4 className="font-bold text-text-primary mb-2">Select Your Input Type</h4>
+                    <p className="text-text-secondary text-sm leading-relaxed">Choose from URLs, WiFi networks, plain text, emails, or phone numbers. Our specialized forms ensure the resulting data structure is optimized for universal scanning.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center font-bold">2</div>
+                  <div>
+                    <h4 className="font-bold text-text-primary mb-2">Local Browser Generation</h4>
+                    <p className="text-text-secondary text-sm leading-relaxed">Unlike other tools, we don't send your sensitive data (like WiFi passwords) to a server. Your browser's memory handles the entire mathematical calculation of the QR pattern.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center font-bold">3</div>
+                  <div>
+                    <h4 className="font-bold text-text-primary mb-2">ISO Standard Verification</h4>
+                    <p className="text-text-secondary text-sm leading-relaxed">Every code is generated according to ISO/IEC 18004 standards. We test the internal structure to ensure it works across all devices, from legacy scanners to the latest iPhones.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center font-bold">4</div>
+                  <div>
+                    <h4 className="font-bold text-text-primary mb-2">Flexible Export Options</h4>
+                    <p className="text-text-secondary text-sm leading-relaxed">Download your code as a high-resolution PNG for digital use or a vector-based SVG for high-end professional printing and large-scale marketing.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Technical Foundation Section (E-E-A-T) */}
+      <section className="bg-background-secondary py-24 border-t border-border-custom">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 space-y-6">
+              <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg uppercase tracking-wider">Technical Foundation</div>
+              <h2 className="text-3xl font-bold text-text-primary">Engineered for Performance and Privacy</h2>
+              <p className="text-text-secondary leading-relaxed">
+                QR Studio isn't just another website; it's a high-performance, client-side application. We leverage <strong>Advanced Javascript Algorithms</strong> and <strong>SVG Vector Rendering</strong> to ensure your QR codes are crisp at any resolution.
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="p-4 bg-white rounded-xl border border-border-custom">
+                  <span className="text-primary font-bold block mb-1">Privacy-First</span>
+                  <span className="text-xs text-text-secondary leading-tight">No passwords or links ever touch our server database.</span>
+                </div>
+                <div className="p-4 bg-white rounded-xl border border-border-custom">
+                  <span className="text-primary font-bold block mb-1">Infinite Scaling</span>
+                  <span className="text-xs text-text-secondary leading-tight">SVG export ensures zero pixelation for billboards.</span>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 bg-white p-8 rounded-3xl border border-border-custom shadow-xl relative overflow-hidden group">
+              <div className="absolute inset-0 bg-primary/[0.02] transform group-hover:scale-110 transition-transform duration-500"></div>
+              <h4 className="font-bold text-text-primary mb-6 flex items-center gap-2">
+                <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                The Gold Standard of QR Technology
+              </h4>
+              <ul className="space-y-4">
+                {[
+                  'ISO/IEC 18004 Compliance',
+                  'Reed-Solomon Error Correction',
+                  'Optimized Data Masking Algorithms',
+                  'Client-Side Rendering Engine',
+                  'Low-Latency SVG Generation'
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3 text-sm text-text-secondary">
+                    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="bg-white py-24 border-t border-border-custom">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="flex flex-col items-center text-center space-y-4">
+              <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl font-bold">1</div>
+              <h4 className="text-xl font-bold text-text-primary">Always Free</h4>
+              <p className="text-text-secondary text-sm leading-relaxed">We aim to democratize access to digital tools. No hidden costs, no recurring subscriptions, and absolute zero watermarks on your generated codes.</p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-4">
+              <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl font-bold">2</div>
+              <h4 className="text-xl font-bold text-text-primary">Privacy by Design</h4>
+              <p className="text-text-secondary text-sm leading-relaxed">Our architecture is built on the principle of transparency. Your data never leaves your browser, ensuring your WiFi passwords and personal details stay secure.</p>
+            </div>
+            <div className="flex flex-col items-center text-center space-y-4">
+              <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl font-bold">3</div>
+              <h4 className="text-xl font-bold text-text-primary">Business Ready</h4>
+              <p className="text-text-secondary text-sm leading-relaxed">Whether you are a restaurant owner needing menus or a corporation doing global marketing, our codes are stable, permanent, and perfectly professional.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            'name': 'QR Studio',
+            'url': 'https://qr-generator.cc',
+            'description': 'Free, private, and professional QR code generator. Generate WiFi, URL, Text, Email, and Phone QR codes locally in your browser.'
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            'name': 'QR Studio',
+            'url': 'https://qr-generator.cc',
+            'logo': 'https://qr-generator.cc/rocket.png'
+          })
+        }}
+      />
     </div>
   );
 }

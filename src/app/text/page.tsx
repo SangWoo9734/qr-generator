@@ -18,6 +18,7 @@ export default function TextPage() {
       type="text"
       formComponent={TextForm}
       faqItems={tool.faqItems}
+      bestPractices={tool.bestPractices}
     />
   );
 }

@@ -18,6 +18,7 @@ export default function PhonePage() {
       type="phone"
       formComponent={PhoneForm}
       faqItems={tool.faqItems}
+      bestPractices={tool.bestPractices}
     />
   );
 }

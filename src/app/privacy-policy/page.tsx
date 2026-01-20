@@ -1,4 +1,18 @@
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - 100% Private QR Generation | QR Studio',
+  description: 'Our commitment to your privacy. Learn how QR Studio processes your data locally in your browser without ever sending it to our servers.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function PrivacyPolicy() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">

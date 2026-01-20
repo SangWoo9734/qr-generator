@@ -1,4 +1,18 @@
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | QR Studio',
+  description: 'The terms and conditions for using QR Studio\'s free online QR code generation tools.',
+  alternates: {
+    canonical: '/terms-of-service',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function TermsOfService() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">

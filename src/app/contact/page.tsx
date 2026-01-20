@@ -1,4 +1,18 @@
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us - QR Studio Support',
+  description: 'Have questions or feedback about our QR code tools? Reach out to the QR Studio team. We\'re here to help.',
+  alternates: {
+    canonical: '/contact',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function ContactPage() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl font-sans">

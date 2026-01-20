@@ -1,4 +1,18 @@
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About QR Studio - Our Story & Philosophy',
+  description: 'Learn about QR Studio\'s mission to provide professional-grade QR code tools while championing user privacy and technical excellence.',
+  alternates: {
+    canonical: '/about',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-20 max-w-5xl font-sans">

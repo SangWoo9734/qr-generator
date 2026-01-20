@@ -8,6 +8,13 @@ const tool = tools.find(t => t.id === 'url')!;
 export const metadata: Metadata = {
   title: tool.metaTitle,
   description: tool.metaDescription,
+  alternates: {
+    canonical: '/url',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function URLPage() {

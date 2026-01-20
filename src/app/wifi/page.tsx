@@ -8,6 +8,13 @@ const tool = tools.find(t => t.id === 'wifi')!;
 export const metadata: Metadata = {
   title: tool.metaTitle,
   description: tool.metaDescription,
+  alternates: {
+    canonical: '/wifi',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function WiFiPage() {

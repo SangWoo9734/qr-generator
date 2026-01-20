@@ -8,6 +8,13 @@ const tool = tools.find(t => t.id === 'email')!;
 export const metadata: Metadata = {
   title: tool.metaTitle,
   description: tool.metaDescription,
+  alternates: {
+    canonical: '/email',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function EmailPage() {

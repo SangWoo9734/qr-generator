@@ -8,6 +8,13 @@ const tool = tools.find(t => t.id === 'text')!;
 export const metadata: Metadata = {
   title: tool.metaTitle,
   description: tool.metaDescription,
+  alternates: {
+    canonical: '/text',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function TextPage() {

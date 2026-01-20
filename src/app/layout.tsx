@@ -11,6 +11,14 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Free QR Code Generator - Fast & Easy",
   description: "Create QR codes instantly for free. Support for URLs, text, vCard, and more. No signup required.",
+  metadataBase: new URL('https://qr-generator.cc'),
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",

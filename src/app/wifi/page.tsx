@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description: tool.metaDescription,
   alternates: {
     canonical: '/wifi',
+    languages: {
+      'en-US': '/en-US/wifi',
+      'es-ES': '/es-ES/wifi',
+      'ja-JP': '/ja-JP/wifi',
+    },
   },
   robots: {
     index: true,
@@ -26,6 +31,7 @@ export default function WiFiPage() {
       formComponent={WiFiForm}
       faqItems={tool.faqItems}
       bestPractices={tool.bestPractices}
+      useCases={tool.useCases}
     />
   );
 }

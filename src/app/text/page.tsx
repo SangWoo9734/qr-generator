@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description: tool.metaDescription,
   alternates: {
     canonical: '/text',
+    languages: {
+      'en-US': '/en-US/text',
+      'es-ES': '/es-ES/text',
+      'ja-JP': '/ja-JP/text',
+    },
   },
   robots: {
     index: true,
@@ -26,6 +31,7 @@ export default function TextPage() {
       formComponent={TextForm}
       faqItems={tool.faqItems}
       bestPractices={tool.bestPractices}
+      useCases={tool.useCases}
     />
   );
 }

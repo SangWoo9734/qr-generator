@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://qr-generator.cc'),
   alternates: {
     canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'es-ES': '/es-ES',
+      'ja-JP': '/ja-JP',
+    },
   },
   robots: {
     index: true,

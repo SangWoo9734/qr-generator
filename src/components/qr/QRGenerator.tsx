@@ -14,6 +14,7 @@ interface QRGeneratorProps {
   formComponent: React.ComponentType<{ onGenerate: (data: string, options: QRCodeOptions) => void }>;
   faqItems?: { question: string; answer: string }[];
   bestPractices?: string[];
+  useCases?: { title: string; description: string }[];
 }
 
 export const QRGenerator: React.FC<QRGeneratorProps> = ({
@@ -23,6 +24,7 @@ export const QRGenerator: React.FC<QRGeneratorProps> = ({
   formComponent: FormComponent,
   faqItems,
   bestPractices,
+  useCases,
 }) => {
   const [qrDataUrl, setQrDataUrl] = React.useState<string | null>(null);
   const [qrSvg, setQrSvg] = React.useState<string | null>(null);

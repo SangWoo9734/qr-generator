@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: 'The terms and conditions for using QR Studio\'s free online QR code generation tools.',
   alternates: {
     canonical: '/terms-of-service',
+    languages: {
+      'en-US': '/en-US/terms-of-service',
+      'es-ES': '/es-ES/terms-of-service',
+      'ja-JP': '/ja-JP/terms-of-service',
+    },
   },
   robots: {
     index: true,

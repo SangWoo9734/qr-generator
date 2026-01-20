@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description: tool.metaDescription,
   alternates: {
     canonical: '/email',
+    languages: {
+      'en-US': '/en-US/email',
+      'es-ES': '/es-ES/email',
+      'ja-JP': '/ja-JP/email',
+    },
   },
   robots: {
     index: true,
@@ -26,6 +31,7 @@ export default function EmailPage() {
       formComponent={EmailForm}
       faqItems={tool.faqItems}
       bestPractices={tool.bestPractices}
+      useCases={tool.useCases}
     />
   );
 }

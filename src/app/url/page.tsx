@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description: tool.metaDescription,
   alternates: {
     canonical: '/url',
+    languages: {
+      'en-US': '/en-US/url',
+      'es-ES': '/es-ES/url',
+      'ja-JP': '/ja-JP/url',
+    },
   },
   robots: {
     index: true,
@@ -26,6 +31,7 @@ export default function URLPage() {
       formComponent={URLForm}
       faqItems={tool.faqItems}
       bestPractices={tool.bestPractices}
+      useCases={tool.useCases}
     />
   );
 }

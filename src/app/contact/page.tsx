@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: 'Have questions or feedback about our QR code tools? Reach out to the QR Studio team. We\'re here to help.',
   alternates: {
     canonical: '/contact',
+    languages: {
+      'en-US': '/en-US/contact',
+      'es-ES': '/es-ES/contact',
+      'ja-JP': '/ja-JP/contact',
+    },
   },
   robots: {
     index: true,

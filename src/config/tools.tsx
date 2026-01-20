@@ -6,6 +6,11 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface UseCase {
+  title: string;
+  description: string;
+}
+
 export interface QRTool {
   id: string;
   name: string;
@@ -18,6 +23,7 @@ export interface QRTool {
   metaDescription: string;
   faqItems: FAQItem[];
   bestPractices: string[];
+  useCases: UseCase[];
 }
 
 export const tools: QRTool[] = [
@@ -64,6 +70,12 @@ export const tools: QRTool[] = [
       'Keep it simple: Use URL shorteners for very long web addresses.',
       'Consider the size: Ensure the code is at least 2cm x 2cm for close scanning.',
     ],
+    useCases: [
+      { title: 'Restaurant Menus', description: 'Replace physical menus with a scan-to-order system, reducing printing costs and improving hygiene.' },
+      { title: 'Real Estate Signage', description: 'Place QR codes on "For Sale" signs to link directly to virtual tours, high-res photos, and property details.' },
+      { title: 'Personal Portfolios', description: 'Add a QR code to your resume or business card that links to your LinkedIn profile or online portfolio.' },
+      { title: 'Event RSVP', description: 'Include a QR code on wedding or conference invitations for instant digital registration and RSVP tracking.' }
+    ],
   },
   {
     id: 'wifi',
@@ -103,6 +115,12 @@ export const tools: QRTool[] = [
       'Place it visibly: In a cafe, place the code on every table or near the counter.',
       'Keep it private: Only share the QR code in areas intended for your guests.',
     ],
+    useCases: [
+      { title: 'Airbnb Guest Kits', description: 'Provide a professional welcome card with a WiFi QR code to help guests connect without typing complex keys.' },
+      { title: 'Cafe & Restaurant Tables', description: 'Reduce staff interruptions by placing secure WiFi codes directly on tables or menu boards.' },
+      { title: 'Coworking Spaces', description: 'Streamline onboarding for new members with instant access to the guest or member network.' },
+      { title: 'Home Guest Access', description: 'A sleek, framed QR code in your living room allows friends to join your network securely.' }
+    ],
   },
   {
     id: 'text',
@@ -136,6 +154,12 @@ export const tools: QRTool[] = [
       'Be concise: Shorter text results in a cleaner, more reliable QR code.',
       'Use paragraphs: For longer notes, use line breaks to make the text readable on the phone.',
       'Verify formatting: Some scanners may strip leading/trailing whitespace.',
+    ],
+    useCases: [
+      { title: 'Inventory Management', description: 'Label warehouse items with QR codes containing SKU numbers, batch dates, and storage instructions.' },
+      { title: 'Educational Scavenger Hunts', description: 'Create interactive learning experiences by hiding offline text clues around a campus or museum.' },
+      { title: 'Product SKUs', description: 'Include technical specs or serialization data on product packaging that works without an internet connection.' },
+      { title: 'Secret Messaging', description: 'A fun way to share surprise notes or gift clues that can only be read with a quick scan.' }
     ],
   },
   {
@@ -171,6 +195,12 @@ export const tools: QRTool[] = [
       'Keep the body short: Some email clients have limits on the length of pre-filled text.',
       'Always test: Different email apps handle line breaks and special characters differently.',
     ],
+    useCases: [
+      { title: 'Customer Support', description: 'Print codes on packaging that pre-fill your support email and the specific product model number.' },
+      { title: 'RSVP for Invitations', description: 'Streamline event planning by pre-filling the subject line with "RSVP: [Event Name]" for guest responses.' },
+      { title: 'Sales Inquiries', description: 'Place QR codes on brochures to capture leads with pre-written subject lines like "Inquiry about [Service Name]."' },
+      { title: 'Feedback Forms', description: 'Gather direct feedback from store visitors by simplifying the email creation process.' }
+    ],
   },
   {
     id: 'phone',
@@ -204,6 +234,12 @@ export const tools: QRTool[] = [
       'Use international format: Start with "+" followed by the country code.',
       'Provide a backup: Always print the actual phone number next to the QR code for accessibility.',
       'Time your campaign: Ensure your phone lines are staffed when users are likely to scan.',
+    ],
+    useCases: [
+      { title: 'Real Estate Agents', description: 'Make it effortless for potential buyers to call for a viewing directly from your "For Sale" yard sign.' },
+      { title: 'Urgent Support Lines', description: 'Provide a "Scan to Call" option on industrial machinery or critical infrastructure for immediate assistance.' },
+      { title: 'Direct Sales Calls', description: 'Enhance your business cards with a phone QR code to turn networking into immediate voice conversions.' },
+      { title: 'Service Appointments', description: 'Place QR codes on service stickers (e.g., HVAC, plumbing) to make re-booking or emergency calls instant.' }
     ],
   },
 ];

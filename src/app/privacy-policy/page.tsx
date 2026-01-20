@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: 'Our commitment to your privacy. Learn how QR Studio processes your data locally in your browser without ever sending it to our servers.',
   alternates: {
     canonical: '/privacy-policy',
+    languages: {
+      'en-US': '/en-US/privacy-policy',
+      'es-ES': '/es-ES/privacy-policy',
+      'ja-JP': '/ja-JP/privacy-policy',
+    },
   },
   robots: {
     index: true,

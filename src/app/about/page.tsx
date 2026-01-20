@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: 'Learn about QR Studio\'s mission to provide professional-grade QR code tools while championing user privacy and technical excellence.',
   alternates: {
     canonical: '/about',
+    languages: {
+      'en-US': '/en-US/about',
+      'es-ES': '/es-ES/about',
+      'ja-JP': '/ja-JP/about',
+    },
   },
   robots: {
     index: true,

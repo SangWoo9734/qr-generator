@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description: tool.metaDescription,
   alternates: {
     canonical: '/phone',
+    languages: {
+      'en-US': '/en-US/phone',
+      'es-ES': '/es-ES/phone',
+      'ja-JP': '/ja-JP/phone',
+    },
   },
   robots: {
     index: true,
@@ -26,6 +31,7 @@ export default function PhonePage() {
       formComponent={PhoneForm}
       faqItems={tool.faqItems}
       bestPractices={tool.bestPractices}
+      useCases={tool.useCases}
     />
   );
 }

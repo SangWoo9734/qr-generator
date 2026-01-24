@@ -9,8 +9,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Free QR Code Generator - Fast & Easy",
-  description: "Create QR codes instantly for free. Support for URLs, text, vCard, and more. No signup required.",
+  title: "무료 QR코드 생성기 - QR Studio: 쉽고 빠른 QR코드 만들기",
+  description: "QR Studio에서 쉽고 빠르게 QR코드를 생성하세요. URL, 와이파이, 명함 등 다양한 유형의 QR코드를 무료로 만들 수 있습니다.",
   metadataBase: new URL('https://qr-generator.cc'),
   alternates: {
     canonical: '/',

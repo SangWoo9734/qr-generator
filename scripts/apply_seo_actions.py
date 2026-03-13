@@ -22,10 +22,18 @@ class SEOActionApplicator:
 
     def apply_meta_title(self, file_path: str, new_value: str) -> bool:
         """메타 타이틀 업데이트"""
+        if not file_path:
+            print(f"⚠️  파일 경로가 제공되지 않았습니다.")
+            return False
+
         full_path = self.workspace_root / file_path
 
         if not full_path.exists():
             print(f"❌ 파일을 찾을 수 없음: {file_path}")
+            return False
+
+        if not new_value or str(new_value).lower() == "none":
+            print(f"⚠️  [{file_path}] 새로운 타이틀 값이 유효하지 않음 (None)")
             return False
 
         try:
@@ -68,10 +76,18 @@ class SEOActionApplicator:
 
     def apply_meta_description(self, file_path: str, new_value: str) -> bool:
         """메타 설명 업데이트"""
+        if not file_path:
+            print(f"⚠️  파일 경로가 제공되지 않았습니다.")
+            return False
+
         full_path = self.workspace_root / file_path
 
         if not full_path.exists():
             print(f"❌ 파일을 찾을 수 없음: {file_path}")
+            return False
+
+        if not new_value or str(new_value).lower() == "none":
+            print(f"⚠️  [{file_path}] 새로운 설명 값이 유효하지 않음 (None)")
             return False
 
         try:

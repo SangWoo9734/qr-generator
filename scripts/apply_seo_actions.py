@@ -33,8 +33,8 @@ class SEOActionApplicator:
 
             # TSX 파일 처리 (Regex 기반)
             if file_path.endswith('.tsx') or file_path.endswith('.ts'):
-                # Pattern 1: title: "..." 또는 title: '...'
-                pattern1 = r'(title:\s*["\'])([^"\']+)(["\'])'
+                # Pattern 1: title: "..." (Next.js) 또는 title="..." (JSX Prop)
+                pattern1 = r'(title[:=]\s*["\'])([^"\']+)(["\'])'
                 if re.search(pattern1, content):
                     modified = re.sub(pattern1, rf'\g<1>{new_value}\g<3>', content)
                     full_path.write_text(modified, encoding='utf-8')
@@ -79,8 +79,8 @@ class SEOActionApplicator:
 
             # TSX 파일 처리
             if file_path.endswith('.tsx') or file_path.endswith('.ts'):
-                # Pattern: description: "..." 또는 description: '...'
-                pattern = r'(description:\s*["\'])([^"\']+)(["\'])'
+                # Pattern: description: "..." (Next.js) 또는 description="..." (JSX Prop)
+                pattern = r'(description[:=]\s*["\'])([^"\']+)(["\'])'
                 if re.search(pattern, content):
                     modified = re.sub(pattern, rf'\g<1>{new_value}\g<3>', content)
                     full_path.write_text(modified, encoding='utf-8')

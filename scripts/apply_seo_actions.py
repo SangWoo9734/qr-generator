@@ -369,7 +369,13 @@ class SEOActionApplicator:
             for action in self.applied_actions:
                 action_type = action.get('action_type', 'unknown')
                 target_file = action.get('target_file', 'unknown')
-                new_value = action.get('new_value', '')
+                
+                # new_value 추출 (parameters 내부 확인)
+                new_value = action.get('new_value')
+                if not new_value and 'parameters' in action:
+                    new_value = action['parameters'].get('new_value', '')
+                if not new_value:
+                    new_value = ''
 
                 if action_type == 'update_meta_title':
                     report_lines.append(f"- **메타 타이틀 변경** (`{target_file}`)")
